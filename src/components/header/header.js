@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import './header.css';
 import Weatherapi from './../../api/api'
 import position from './../../api/position'
+import Loading from './../loading/loading'
+import Error from './../errors/error'
 
 export default class Header extends Component { 
 
@@ -11,9 +13,19 @@ export default class Header extends Component {
 
 
     state = {
-        temperature: null,
-        city: null,
-        country: null,
+        weather: {
+            temperature: null,
+            city: null,
+            country: null
+        },
+        loading: true,
+        error: false
+    }
+
+    onError = (err) => {
+        this.setState({
+            error: true
+        })
     }
 
     async updateInfo() {
@@ -24,10 +36,12 @@ export default class Header extends Component {
         })
         await this.WeatherApi.getCyti(city)
         .then((citys) => {
-            this.setState(() => {
-                return  { temperature: citys.current.temp_c, city: citys.location.name, country: citys.location.country}
+            this.setState(({ weather }) => {
+                console.log(citys)
+                return  { weather:{ temperature: citys.temperature, city: citys.city, country: citys.country }, loading: false}
             })
         })
+        .catch(this.onError)
     }
 
     constructor(){
@@ -37,13 +51,28 @@ export default class Header extends Component {
 
     render(){
 
-        const { temperature, city, country } = this.state;
-
-
-        return(
+        const { weather , loading, error } = this.state;
+        const load = loading ? <Loading /> : null;
+        const content = !(loading || error) ? <Viewinfo weather = {weather} /> : null;
+        const err = error ? <Error /> : null;
+        return (
+            //типо красивая обертка 
             <div>
-                Сейчас в { country }, а точнее в { city }, { temperature } градусов
+                {err}
+                {load}
+                {content}
             </div>
         )
     }
+}
+
+const Viewinfo = ({weather}) => {
+    const { temperature, city, country } = weather;
+    return(
+        <React.Fragment>
+            <div>
+                Сейчас в { country }, а точнее в { city }, { temperature } градусов
+            </div>
+        </React.Fragment>
+    );
 }

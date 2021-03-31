@@ -10,6 +10,14 @@ export default class Weatherapi {
       return await res.json();
     }
     async getCyti(city){
-      return await this.fetchonderver(`q=${city}&aqi=no`)
+      const info =  await this.fetchonderver(`q=${city}&aqi=no`);
+      return this._transformWeather(info);
+    }
+    _transformWeather(info){
+      return {
+        temperature: info.current.temp_c,
+        city: info.location.name,
+        country: info.location.country
+      }
     }
   }
