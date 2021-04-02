@@ -1,0 +1,74 @@
+@import url('../../fonts/fonts.css');
+
+header {
+    height: 70px;
+    width: 90%;
+    display: flex;
+    margin: 10px auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(93, 93, 95);
+}
+
+header div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+header div div p {
+    font-size: 30px;
+    line-height: 45px;
+    font-weight: 500;
+}
+
+header div div p span {
+    color: lawngreen;
+}
+
+header div div:nth-child(1){
+    width: 220px;
+    margin-right: 40px;
+    margin-left: 10px;;
+}
+header div div:nth-child(2){
+    width: calc(70% - 220px);
+}
+
+header div div:nth-child(2) img:hover  {
+    cursor: pointer;
+}
+
+header div div form {
+    width: 100%;
+    display: flex;
+}
+
+header div div {
+    display: flex;
+    padding: 5px 0;
+}
+
+header div div input{
+    height: 90%;
+    font-size: 20px;
+    width: 75%;
+    border: none;
+    padding-left: 10px;
+    border: solid 2px black;
+    margin-left:20px;
+}
+
+header div div button {
+    background-color: black;
+    color: snow;
+    height: 100%;
+    width: 70px;
+    border: none;
+    font-size: 20px;
+}
+
+header div div img {
+    height: 40px;
+}

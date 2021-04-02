@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 import './components/header/header'
-import Header from './components/header/header';
+import Forecast from './components/forecast/forecast';
+import Header from './components/header/header'
+
 
 export default class App extends Component {
     
@@ -14,6 +16,7 @@ export default class App extends Component {
         return(
             <div>
                 <Header />
+                <Forecast />
             </div>
         )
     }

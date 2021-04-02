@@ -5,10 +5,11 @@ const Loading = () => {
 
 
     return(
-        <div className="loadingio-spinner-rolling-uhvcjgnxcy">
-        <div className="ldio-kchns31su3n">
-        <div></div>
-        </div></div>
+        <div className="loading-spinner-rolling">
+            <div className="second-loading-spinner">
+                <div></div>
+            </div>
+        </div>
     )
 }
-export default Loading
+export default Loading 

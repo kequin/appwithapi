@@ -1,78 +1,36 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './header.css';
-import Weatherapi from './../../api/api'
-import position from './../../api/position'
-import Loading from './../loading/loading'
-import Error from './../errors/error'
-
-export default class Header extends Component { 
-
-    WeatherApi = new Weatherapi();
-
-    Position = new position();
+import Cloudy from './source/cloudy.png'
+import map from './source/map.png'
 
 
-    state = {
-        weather: {
-            temperature: null,
-            city: null,
-            country: null
-        },
-        loading: true,
-        error: false
-    }
+export default class Header extends Component {
 
-    onError = (err) => {
-        this.setState({
-            error: true
-        })
-    }
 
-    async updateInfo() {
-        let city = null;
-        await this.Position.getSity()
-        .then((info) => {
-            city = info.state;
-        })
-        await this.WeatherApi.getCyti(city)
-        .then((citys) => {
-            this.setState(({ weather }) => {
-                console.log(citys)
-                return  { weather:{ temperature: citys.temperature, city: citys.city, country: citys.country }, loading: false}
-            })
-        })
-        .catch(this.onError)
-    }
 
-    constructor(){
-        super();
-        this.updateInfo()
-    }
+    render() {
 
-    render(){
 
-        const { weather , loading, error } = this.state;
-        const load = loading ? <Loading /> : null;
-        const content = !(loading || error) ? <Viewinfo weather = {weather} /> : null;
-        const err = error ? <Error /> : null;
-        return (
-            //типо красивая обертка 
-            <div>
-                {err}
-                {load}
-                {content}
-            </div>
+        return(
+            <header>
+                <div>
+                    <div>
+                        <p>Weather
+                            <span>Info</span>
+                        </p>
+                        <img src = {Cloudy} alt='img'/>
+                    </div>
+                    <div>
+                        <img src = {map} alt='map' />
+                        <form>
+                            <input placeholder='Введите название страны или города' />
+                            <button>
+                                search
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </header>
         )
     }
-}
-
-const Viewinfo = ({weather}) => {
-    const { temperature, city, country } = weather;
-    return(
-        <React.Fragment>
-            <div>
-                Сейчас в { country }, а точнее в { city }, { temperature } градусов
-            </div>
-        </React.Fragment>
-    );
 }
