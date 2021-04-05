@@ -1,14 +1,16 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
-import './components/header/header'
+import './components/header/header';
 import Forecast from './components/forecast/forecast';
-import Header from './components/header/header'
+import Header from './components/header/header';
 
 
 export default class App extends Component {
     
-
+    state = {
+        city: ''
+    }
 
     
     render() {

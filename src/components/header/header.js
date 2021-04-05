@@ -6,7 +6,13 @@ import map from './source/map.png'
 
 export default class Header extends Component {
 
+    SubmitSearch = (e) => {
+        e.preventDefault();
+    }
 
+    SearchButton = (e) => {
+        
+    }
 
     render() {
 
@@ -22,9 +28,9 @@ export default class Header extends Component {
                     </div>
                     <div>
                         <img src = {map} alt='map' />
-                        <form>
+                        <form type='text' onSubmit={this.SubmitSearch}>
                             <input placeholder='Введите название страны или города' />
-                            <button>
+                            <button onClick={this.SearchButton}>
                                 search
                             </button>
                         </form>

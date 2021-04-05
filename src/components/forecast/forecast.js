@@ -4,6 +4,7 @@ import Weatherapi from './../../api/api'
 import position from './../../api/position'
 import Loading from './../loading/loading'
 import Error from './../errors/error'
+import Viewinfo from './Viewinfo'
 
 export default class Header extends Component { 
 
@@ -19,29 +20,43 @@ export default class Header extends Component {
             country: null
         },
         loading: true,
-        error: false
+        error: false,
+        forecast: null
     }
+
+    
 
     onError = (err) => {
         this.setState({
             error: true
         })
+        this.setState({
+            loading: false
+        })
     }
 
     async updateInfo() {
-        let city = null;
-        await this.Position.getSity()
+        await this.Position.getCity()
         .then((info) => {
-            city = info.state;
-        })
-        await this.WeatherApi.getCyti(city)
-        .then((citys) => {
             this.setState(() => {
-                console.log(citys)
-                return  { weather:{ temperature: citys.temperature, city: citys.city, country: citys.country }, loading: false}
+                return {weather:{city:info.state}}
+            })
+        })
+        await this.WeatherApi.getCyti(this.state.weather.city)
+        .then((info) => {
+            this.setState(() => {
+                return  {weather:{temperature: info.current.temp_c, city: info.location.name, country: info.location.country}}
+            }) 
+            this.setState(() => {
+                return {forecast:info.forecast}
+            })
+
+            this.setState(() => {
+                return {loading:false}
             })
         })
         .catch(this.onError)
+
     }
 
     constructor(){
@@ -51,9 +66,9 @@ export default class Header extends Component {
 
     render(){
 
-        const { weather , loading, error } = this.state;
+        const { weather , loading, error, forecast } = this.state;
         const load = loading ? <Loading /> : null;
-        const content = !(loading || error) ? <Viewinfo weather = {weather} /> : null;
+        const content = !(loading || error) ? <Viewinfo forecast = {forecast} weather = {weather} /> : null;
         const err = error ? <Error /> : null;
         return (
             //типо красивая обертка 
@@ -64,15 +79,4 @@ export default class Header extends Component {
             </div>
         )
     }
-}
-
-const Viewinfo = ({weather}) => {
-    const { temperature, city, country } = weather;
-    return(
-        <React.Fragment>
-            <div>
-                Сейчас в { country }, а точнее в { city }, { temperature } градусов
-            </div>
-        </React.Fragment>
-    );
 }

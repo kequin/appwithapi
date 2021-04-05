@@ -5,6 +5,7 @@ header {
     width: 90%;
     display: flex;
     margin: 10px auto;
+    padding-right: 5px;
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgb(93, 93, 95);
@@ -33,7 +34,7 @@ header div div:nth-child(1){
     margin-left: 10px;;
 }
 header div div:nth-child(2){
-    width: calc(70% - 220px);
+    width: 570px;
 }
 
 header div div:nth-child(2) img:hover  {
@@ -43,6 +44,7 @@ header div div:nth-child(2) img:hover  {
 header div div form {
     width: 100%;
     display: flex;
+    max-width: 570px;
 }
 
 header div div {
@@ -54,6 +56,8 @@ header div div input{
     height: 90%;
     font-size: 20px;
     width: 75%;
+    border-radius: 5px 0 0 5px;
+    max-width: 570px;
     border: none;
     padding-left: 10px;
     border: solid 2px black;

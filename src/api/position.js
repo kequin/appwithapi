@@ -7,7 +7,28 @@ export default class Position {
       }
       return await res.json();
     }
-    async getSity(){
-      return await this.fetchonderver()
+    async getCity(){
+      return await this.fetchonderver() 
     }
+    /*
+      fetch('https://geolocation-db.com/json/afa4d000-8eb9-11eb-a6ff-2538b793e762')
+      .then((res) => return res.json)
+      .then((location) => return location.city)
+      .catch(error)
+
+
+
+
+
+
+
+
+
+
+
+
+       let fun = (dfhbvlafhb, ksfdhbvla) => {
+        
+      }
+    */
 }
