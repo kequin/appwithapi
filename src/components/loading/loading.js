@@ -5,9 +5,16 @@ const Loading = () => {
 
 
     return(
-        <div className="loading-spinner-rolling">
-            <div className="second-loading-spinner">
+        <div className="loadingio-spinner-double-ring-k6qwfa2ghir">
+            <div className="ldio-b9ajo7rt4kt">
                 <div></div>
+                <div></div>
+                <div>
+                    <div></div>
+                </div>
+                <div>
+                    <div></div>
+                </div>
             </div>
         </div>
     )

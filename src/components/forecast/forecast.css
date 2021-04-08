@@ -1,0 +1,9 @@
+.content {
+    width: 90%;
+    margin: 10px auto 0 auto;
+    background-color: #F1FAEE;
+    border-radius: 10px;
+    box-shadow: 0 0 6px rgb(93, 93, 95);
+    display: flex;
+    min-height: 300px;
+}

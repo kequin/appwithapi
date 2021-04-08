@@ -4,7 +4,8 @@ import Weatherapi from './../../api/api'
 import position from './../../api/position'
 import Loading from './../loading/loading'
 import Error from './../errors/error'
-import Viewinfo from './Viewinfo'
+import Viewinfo from './viewinfo/Viewinfo'
+import './forecast.css'
 
 export default class Header extends Component { 
 
@@ -35,16 +36,11 @@ export default class Header extends Component {
         })
     }
 
-    async updateInfo() {
-        await this.Position.getCity()
+    updateInfo(state) {
+        this.WeatherApi.getCyti(state.city)
         .then((info) => {
             this.setState(() => {
-                return {weather:{city:info.state}}
-            })
-        })
-        await this.WeatherApi.getCyti(this.state.weather.city)
-        .then((info) => {
-            this.setState(() => {
+                console.log(info.current.temp_c)
                 return  {weather:{temperature: info.current.temp_c, city: info.location.name, country: info.location.country}}
             }) 
             this.setState(() => {
@@ -59,20 +55,22 @@ export default class Header extends Component {
 
     }
 
-    constructor(){
-        super();
-        this.updateInfo()
+    constructor(props){
+        super(props);
+        this.updateInfo(props)
     }
 
     render(){
-
         const { weather , loading, error, forecast } = this.state;
+        
+
+
         const load = loading ? <Loading /> : null;
         const content = !(loading || error) ? <Viewinfo forecast = {forecast} weather = {weather} /> : null;
         const err = error ? <Error /> : null;
         return (
             //типо красивая обертка 
-            <div>
+            <div className={'content'}>
                 {err}
                 {load}
                 {content}

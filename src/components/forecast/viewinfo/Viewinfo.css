@@ -1,0 +1,13 @@
+.chart {
+    width: 70%;
+    height: 300px;
+}
+
+.info {
+    width: 28%;
+    height: 280px;
+    text-align: center;
+    margin: auto auto;
+    background-color: #A8DADC;
+    border-radius: 10px;
+}

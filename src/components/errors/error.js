@@ -5,18 +5,8 @@ const Error = () => {
 
 
     return(
-        <div>
-            oops...
-
-            {/* this.setState({
-            loading: false
-
-            let city = null;
-        await this.Position.getSity()
-        .then((info) => {
-            city = info.state;
-        }) 
-        }) */}
+        <div className={'error'}>
+            Упссс что-то пошло не так
         </div>
     )
 }

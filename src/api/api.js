@@ -8,6 +8,7 @@ export default class Weatherapi {
       if(!res.ok) {
         throw new Error(`Could not fetch ${url}, received ${res.status} `)
       }
+      
       return await res.json();
     }
     async getCyti(city){

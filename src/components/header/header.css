@@ -5,10 +5,10 @@ header {
     width: 90%;
     display: flex;
     margin: 10px auto;
-    padding-right: 5px;
-    background-color: #ffffff;
+    /* padding-right: 5px; */
+    background-color: #F1FAEE;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgb(93, 93, 95);
+    box-shadow: 0 0 6px rgb(93, 93, 95);
 }
 
 header div {
@@ -43,6 +43,7 @@ header div div:nth-child(2) img:hover  {
 
 header div div form {
     width: 100%;
+    padding-right: 5px;
     display: flex;
     max-width: 570px;
 }
@@ -70,6 +71,7 @@ header div div button {
     height: 100%;
     width: 70px;
     border: none;
+    border-radius: 0 5px 5px 0;
     font-size: 20px;
 }
 

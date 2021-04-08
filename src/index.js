@@ -9,16 +9,20 @@ import Header from './components/header/header';
 export default class App extends Component {
     
     state = {
-        city: ''
+        city: null
     }
 
-    
+    Search = (city) => {
+        this.setState(() => { return {city:city} })
+        console.log(city)
+    }
+
     render() {
   
         return(
             <div>
-                <Header />
-                <Forecast />
+                <Header Searchcity = {this.Search}/>
+                <Forecast city = {this.state.city} />
             </div>
         )
     }

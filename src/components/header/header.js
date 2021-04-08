@@ -6,12 +6,16 @@ import map from './source/map.png'
 
 export default class Header extends Component {
 
+
     SubmitSearch = (e) => {
         e.preventDefault();
+        // const datainput = e.target.childNodes[0].value;
+        // console.log(datainput)
     }
 
-    SearchButton = (e) => {
-        
+    Searchcity = (e) => {
+        const city = e.target.parentNode.childNodes[0].value;
+        this.props.Searchcity(city);
     }
 
     render() {
@@ -30,7 +34,7 @@ export default class Header extends Component {
                         <img src = {map} alt='map' />
                         <form type='text' onSubmit={this.SubmitSearch}>
                             <input placeholder='Введите название страны или города' />
-                            <button onClick={this.SearchButton}>
+                            <button onClick={this.Searchcity}>
                                 search
                             </button>
                         </form>
