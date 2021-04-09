@@ -18,6 +18,10 @@ export default class Header extends Component {
         this.props.Searchcity(city);
     }
 
+    MapCity = () => {
+        this.props.MapSearchCity();
+    }
+
     render() {
 
 
@@ -31,7 +35,7 @@ export default class Header extends Component {
                         <img src = {Cloudy} alt='img'/>
                     </div>
                     <div>
-                        <img src = {map} alt='map' />
+                        <img src = {map} alt='map' onClick={this.MapCity}/>
                         <form type='text' onSubmit={this.SubmitSearch}>
                             <input placeholder='Введите название страны или города' />
                             <button onClick={this.Searchcity}>

@@ -19,14 +19,11 @@ export default class Viewinfo extends Component{
         return finalobject
     }
     render(){    
-        const { weather, forecast } = this.props;
-        const { temperature, city} = weather;
-        const { forecastday} = forecast;
+        const {  forecastday, weather } = this.props;
         // const { temperature, city, country } = weather;
 
         // const { forecastday, current, location } = forecast;
 
-        // console.log(forecastday)
         
         
         const data = this.hour_temp_and_other(forecastday);
@@ -61,7 +58,7 @@ export default class Viewinfo extends Component{
         return(
             <React.Fragment>
                 <div className={'info'}>
-                    <h3>Сейчас в { city }</h3> <p>{ temperature } градусов</p>
+                    <h3>Сейчас в { weather.city }</h3> <p>{ weather.temp_c } градусов</p>
                 </div>
                 <div className='chart'>
                     <RenderLineChart/>
