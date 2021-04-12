@@ -4,10 +4,10 @@ import reportWebVitals from './reportWebVitals';
 import './components/header/header';
 import Forecast from './components/forecast/forecast';
 import Header from './components/header/header';
-import Weatherapi from './api/api'
-import position from './api/position'
-
-
+import Weatherapi from './api/api';
+import position from './api/position';
+import './index.css';
+import Renderbtnandp from './comp';
 
 export default class App extends Component {
     
@@ -44,8 +44,9 @@ export default class App extends Component {
     updateInfo = (city) => {
         this.WeatherApi.getCyti(city)
         .then((info) => {
-            this.setState({
-                error: false})
+            console.log(Object.prototype.toString.call(info) === '[object Object]')
+            
+            this.setState({error: false})
             this.setState(() => {
                 return  {weather:{temp_c: info.current.temp_c, city: info.location.name, country: info.location.country}}
             }) 
@@ -71,12 +72,7 @@ export default class App extends Component {
     }
 
     onError = () => {
-        this.setState({
-            error: true
-        })
-        this.setState({
-            loading: false
-        })
+        this.setState({error: true}, {loading: false})
     }
 
 
@@ -85,7 +81,6 @@ export default class App extends Component {
     }
 
     MapSearch =  () => {
-        
         this.updateInfo(this.state.city);
     }
 
@@ -97,7 +92,8 @@ export default class App extends Component {
         // const err = error ? <Error /> : null;
 
         return(
-            <div>
+            <div className='main-center-div'>
+                <Renderbtnandp />
                 <Header MapSearchCity = {this.MapSearch} Searchcity = {this.Search}/>
                 <Forecast weather = {weather} loading = {loading} error = {error} forecast = {forecast} />
             </div>
