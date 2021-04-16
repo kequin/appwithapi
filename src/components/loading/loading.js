@@ -5,15 +5,17 @@ const Loading = () => {
 
 
     return(
-        <div className="loadingio-spinner-double-ring-k6qwfa2ghir">
-            <div className="ldio-b9ajo7rt4kt">
-                <div></div>
-                <div></div>
-                <div>
+        <div className='parentloading'>
+            <div className="loadingio-spinner-double-ring-k6qwfa2ghir">
+                <div className="ldio-b9ajo7rt4kt">
                     <div></div>
-                </div>
-                <div>
                     <div></div>
+                    <div>
+                        <div></div>
+                    </div>
+                    <div>
+                        <div></div>
+                    </div>
                 </div>
             </div>
         </div>

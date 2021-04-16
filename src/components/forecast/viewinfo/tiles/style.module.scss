@@ -1,0 +1,9 @@
+.div {
+    display:flex;
+    justify-content: space-between;
+}
+@media all and (max-width:850px){
+    .div {
+        display: inline;
+    }
+}

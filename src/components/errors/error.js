@@ -1,12 +1,21 @@
 import React from 'react';
-import './error.css';
+import style from './error.module.scss';
+import error from  './../../images/errorpng.png';
 
 const Error = () => {
 
 
     return(
-        <div className={'error'}>
-            Упссс что-то пошло не так
+        <div className={style.error}>
+           <div>
+               <h2>
+                   Ошибка!!
+               </h2> 
+               <p>
+                   Это означает что мы не можем найти страницу которую ты ищешь  
+               </p>
+           </div>
+           <img src={error} alt='error'></img>
         </div>
     )
 }

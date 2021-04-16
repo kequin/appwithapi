@@ -1,33 +1,13 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './forecast.css';
 import Loading from './../loading/loading'
 import Error from './../errors/error'
 import Viewinfo from './viewinfo/Viewinfo'
 import './forecast.css'
-import Weatherapi from './../../api/api'
 
 
-export default class Header extends Component { 
-
-    WeatherApi = new Weatherapi();
-
-
-    state = {
-        weather: {
-            temperature: null,
-            city: 'brest',
-            country: null
-        },
-        loading: true,
-        error: false,
-        forecast: null,
-        default: true
-    }
-
-
-
-    render(){
-        const { forecast, error, loading, weather } = this.props;
+const Forecast = (props) => { 
+        const { forecast, error, loading, weather } = props;
         const load = loading ? <Loading /> : null;
         const content = !(loading || error) ? <Viewinfo weather ={weather } forecastday = {forecast}  /> : null;
         const err = error ? <Error /> : null;
@@ -39,5 +19,7 @@ export default class Header extends Component {
                 {content}
             </div>
         )
-    }
+    
 }
+
+export default Forecast

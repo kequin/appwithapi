@@ -2,6 +2,12 @@
   0% { transform: rotate(0) }
   100% { transform: rotate(360deg) }
 }
+.parentloading{
+  width: 100%;
+  height: 400px;
+  display: flex;
+}
+
 .ldio-b9ajo7rt4kt div { box-sizing: border-box!important }
 .ldio-b9ajo7rt4kt > div {
   position: absolute;
@@ -76,11 +82,11 @@
 }
 .loadingio-spinner-double-ring-k6qwfa2ghir {
   width: 98px;
-  margin: auto auto;
   height: 98px;
+  margin:auto;
   display: inline-block;
   overflow: hidden;
-  background: #edffec;
+  background: #E2EAFC;
 }
 .ldio-b9ajo7rt4kt {
   width: 100%;

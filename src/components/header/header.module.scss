@@ -1,0 +1,110 @@
+@import url('../../fonts/fonts.css');
+
+header {
+    height: 70px;
+    width: 100%;
+    display: flex;
+    margin: 10px 0;
+    /* padding-right: 5px; */
+    background-color: #E2EAFC;/*F1FAEE*/
+    border-radius: 10px;
+    box-shadow: 0 0 6px rgb(93, 93, 95);
+    div {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+
+        div {
+            display: flex;
+            padding: 5px 0;
+
+            input{
+                height: 90%;
+                font-size: 20px;
+                width: 95%;
+                border-radius: 5px 0 0 5px;
+                padding-left: 10px;
+                border: solid 2px black;
+                margin-left:20px;
+                background-color: #E2EAFC;
+            }
+
+            button {
+                background-color: black;
+                color: snow;
+                height: 100%;
+                width: 70px;
+                border: none;
+                border-radius: 0 5px 5px 0;
+                font-size: 20px;
+            }
+
+            img {
+                height: 40px;
+                margin-left: 10px;
+            }
+        }
+
+        div p {
+            font-size: 30px;
+            line-height: 45px;
+            font-weight: 500;
+
+            span {
+                color: rgb(110, 204, 16);
+            }
+        }
+
+        div:nth-child(1){
+            width: 220px;
+            margin-right: 40px;
+            margin-left: 10px;;
+        }
+
+        div:nth-child(2){
+            width: 60%;
+            
+            img:hover  {
+                cursor: pointer;
+            }
+        }
+
+        form {
+            width: 100%;
+            padding-right: 5px;
+            display: flex;
+        }
+    }
+    // @media all and (max-width: 700px){
+    //     div {
+    //         display:inline;
+    //     }
+
+    //     div p {
+    //         font-size: 10px;
+    //     }
+
+    //     div div:nth-child(2) {
+    //         width: 99%;
+    //     }
+    // }
+}
+
+@media all and (max-width: 700px){
+    header {
+        height: 140px;
+        div {
+            display:inline;
+        }
+
+        div p {
+            font-size: 10px;
+        }
+
+        div div:nth-child(2) {
+            width: 99%;
+        }
+    
+    }
+}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './header.css';
-import Cloudy from './source/cloudy.png'
-import map from './source/map.png'
+import './header.module.scss';
+import Cloudy from './../../images/cloudy.png';
+import map from './../../images/map.png';
 
 
 export default class Header extends Component {
@@ -37,7 +37,7 @@ export default class Header extends Component {
                     <div>
                         <img src = {map} alt='map' onClick={this.MapCity}/>
                         <form type='text' onSubmit={this.SubmitSearch}>
-                            <input placeholder='Введите название страны или города' />
+                            <input placeholder='Название города' />
                             <button onClick={this.Searchcity}>
                                 search
                             </button>
