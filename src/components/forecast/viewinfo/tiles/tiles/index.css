@@ -5,6 +5,7 @@
     background-color: #B6CCFE;
     border-radius: 10px;
     display: flex;
+    transition: 4s;
 }
 
 .info div .hide {
@@ -97,6 +98,8 @@
     width: 60%;
     height: 280px;
     margin: 1% 1% 0 1%;
+    top: 0;
+    right: 0;
     z-index: 10;
 }
 
@@ -115,13 +118,22 @@
 }
 @media all and (max-width:850px){
     
-    .active {
-        width: 98%;
+
+
+
+    .default {
+        position:absolute;
+        height: 210px;
     }
 
-    .default:nth-child(1){
-        margin-bottom: 0;
-    }
+    .active {
+        width: 95%;
+        right: 1.5%;
+        top: 60px;
+        position: absolute;
+        box-shadow: 0 0 10px #6f99fa;
+    }   
+
 
     .info div h3 {
         font-size: 16px;
@@ -131,18 +143,26 @@
         font-size: 15px;
     }
 
-    .info:nth-child(1) {
+    .default:nth-child(1) {
         width: 98%;
+        top: 0px;
+        right: 0%;
+        left: 0%;
+        margin-bottom: 0;
     }
 
-    .info:nth-child(2)  {
+    .default:nth-child(2)  {
         width: 48%;
-        float: left;
+        left: 50;
+        right: 50%;
+        top: 220px;
     }
 
-    .info:nth-child(3) {
-        float: right;
+    .default:nth-child(3) {
         width: 48%;
+        left: 50%;
+        
+        top: 220px;
     }
 
     .info div button {

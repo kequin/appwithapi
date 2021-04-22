@@ -39,13 +39,12 @@ export default class App extends Component {
             .then((info) => {
                 city = info.city;
             })
-            .catch(this.onError); 
-        console.log(city)  
+            .catch(this.onError);   
         await this.updateInfo(city);
     }
     
-    updateInfo = async (city) => {
-        await this.WeatherApi.getCyti(city)
+    updateInfo = (city) => {
+        this.WeatherApi.getCyti(city)
         .then((info) => {
             
             this.setState({error: false})

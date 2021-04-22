@@ -68,7 +68,7 @@ export default class Tiles extends Component {
 
     visibleelement = (id) => {
         const arr = this.state.blocks;
-        let clas;   
+        let clas;
         switch(true){
             case arr[id] === true:
                 clas = 'nothidden';
@@ -85,7 +85,6 @@ export default class Tiles extends Component {
     render(){
 
         const {weather, forecastday, id} = this.props;
-        console.log(forecastday)
         // console.log(forecastday)
         let date;
         switch(true){

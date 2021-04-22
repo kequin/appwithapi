@@ -7,9 +7,6 @@ const Viewinfo = (props) => {
     
         const {  forecastday, weather } = props;
         // console.log(forecastday)
-        const id = [
-            {id:0},{id:1},{id:2}
-        ]
         // const { temperature, city, country } = weather;
 
         // const { forecastday, current, location } = forecast;
@@ -19,7 +16,7 @@ const Viewinfo = (props) => {
         // str 50  dx={20} это отступы вправо если с минусов то в лево, dy={10} тоже самое только вверх и низ
         return(
             <React.Fragment>
-                <Tiles weather={weather} id = {id} forecastday={forecastday}/>
+                <Tiles weather={weather} forecastday={forecastday}/>
                 <Graphic forecastday={forecastday} />
                 
             </React.Fragment>

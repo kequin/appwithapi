@@ -33,7 +33,6 @@ export default class Graphic extends Component {
     render(){
 
         const { forecastday } = this.props;
-        console.log()
         const data = this.hour_temp_and_other(forecastday);
         const min_max_temp = this.max_and_min_temp(forecastday);
 

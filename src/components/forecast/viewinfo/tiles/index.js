@@ -4,19 +4,28 @@ import style from './style.module.scss';
 
 const Render = (props) => {
     
-    const { id, forecastday, weather} = props;
+
+
+
+    const {forecastday, weather} = props;
+
+
+    const id = [
+        {id:0},{id:1},{id:2}
+    ];
+
+
     const all_tiles = id.map((item)=> {
         const { id } = item;
-        console.log(id)
         return (
             <Tiles key={id} id={id} weather={weather} forecastday={forecastday}  />
         )
     })
 
     return (
-        <div className={style.div}>
-            {all_tiles}
-        </div>
+            <div className={style.div}>
+                {all_tiles}
+            </div>
     )
 }
 
