@@ -8,21 +8,17 @@ export default class Tiles extends Component {
             false,
             false,
             false
-        ]
+        ],
     }
 
     fullinfo1 = (e) => {
-        this.setState(() => {
-            return { blocks:[false,false,false] }
-        })
         // console.log(e.target.parentNode.parentNode.className)
-        if(e.target.value){
+        if(e.target.value && e.target.parentNode.className === 'allinfo'){
             const value = e.target.value
-            console.log(value)
             if(!this.state.blocks[value]){
-                let blocks = [false,false, false]
+                let blocks = [false,false, false];
+                
                 blocks[value] = true;
-                console.log(blocks)
                 this.setState(() => {
                     return { blocks:blocks }
                 })
@@ -69,11 +65,28 @@ export default class Tiles extends Component {
     // сдесь сделай функцию которая проверяет state и ставит margin-left: тут значение%;
     // margin-left: -50%; для 
 
+
+    visibleelement = (id) => {
+        const arr = this.state.blocks;
+        let clas;   
+        switch(true){
+            case arr[id] === true:
+                clas = 'nothidden';
+                break;
+            case arr[id] === false:
+                clas = 'hide';
+                break;
+            default:
+                clas = 'hide';
+        }
+        return clas;
+    }
+
     render(){
 
         const {weather, forecastday, id} = this.props;
+        console.log(forecastday)
         // console.log(forecastday)
-        console.log()
         let date;
         switch(true){
             case id === 0:
@@ -92,11 +105,11 @@ export default class Tiles extends Component {
 
             <React.Fragment>
                     <div style={{transition: '.4s'}} onClick={this.fullinfo1} className={this.size_control(id)}>
-                        <div>
-                            <div style={this.krest(id)} className='krestic'></div>
-                            <h3 className='h3'>{date} в { weather.city }, {weather.country}</h3> 
+                        <div style={this.krest(id)} className='krestic'></div>
+                        <div className='allinfo'>
+                            <h3 >{date} в { weather.city }, {weather.country}</h3> 
                             <p className='p'>{ forecastday[id].day.avgtemp_c } градусов</p>
-                            <div className='hide'>
+                            <div className={this.visibleelement(id)}>
                                 <span className='sky'>
                                     <h4>{forecastday[id].day.condition.text}</h4>
                                     <img src={`https://${forecastday[id].day.condition.icon}`} alt="weather"></img>

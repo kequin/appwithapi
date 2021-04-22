@@ -6,7 +6,7 @@ import './styles.module.scss';
 const Viewinfo = (props) => { 
     
         const {  forecastday, weather } = props;
-        console.log(forecastday)
+        // console.log(forecastday)
         const id = [
             {id:0},{id:1},{id:2}
         ]

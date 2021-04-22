@@ -1,22 +1,26 @@
 .info {
     width: 28%;
     position: relative;
-    height: 280px;
-    margin: 10px 0;
     z-index: 5;
-    /* background-color: rgba(168, 218, 220, .5); */
     background-color: #B6CCFE;
     border-radius: 10px;
     display: flex;
 }
 
 .info div .hide {
+    display: none;
+}
+
+.info div .nothidden {
     display: block;
+}
+
+.info div div {
+    width: 100%;
 }
 
 .info div {
     width: 80%;
-    height: 100%;
     margin: 10px auto 0 auto;
     position: relative;
 }
@@ -40,6 +44,10 @@
     font-size: 19px;
 }
 
+.info div h3{
+    width: 90%;
+}
+
 .sky{
     margin-top: 20px;
     height: 50px;
@@ -51,7 +59,6 @@
 
 .sky h4 {
     float: left;
-    width: 40%;
     font-weight: 400;
 }
 
@@ -59,46 +66,44 @@
     height: 50px
 }
 
-.info div .krestic {
-    height: 50px;
-    width: 80px;
-    right: 0;
-    margin-right: -20%;
-    position: absolute;
-}
+    .info .krestic {
+        height: 40px;
+        width: 40px;
+        right: 0;
+        top: 10px;
+        position: absolute;
+    }
 
-.info div .krestic::after, .krestic::before {
-    content: '';
-    width: 40px;
-    position: absolute;
-    margin-top:20px;
-    margin-bottom: 5px;
-    height: 5px;
-    background-color: black;
-}
+        .info .krestic::after, .krestic::before {
+            content: '';
+            width: 90%;
+            position: absolute;
+            height: 4px;
+            border-radius: 2px;
+            background-color: black;
+        }
 
-.info div .krestic::before {
-    transform: rotate(45deg);
-}
+        .info .krestic::before {
+            transform: rotate(45deg);
+        }
 
-.info div .krestic::after {
-    transform: rotate(-45deg);
-}
+        .info .krestic::after {
+            transform: rotate(-45deg);
+        }
 
 
 .active {
     position: relative;
     width: 60%;
     height: 280px;
-    margin: 10px 1%;
+    margin: 1% 1% 0 1%;
     z-index: 10;
-    float: none;
 }
 
 .default {
     position:relative;
     left: 0;
-    margin: 10px 1%;
+    margin: 1% 1% 0 1%;
     width: 28%;
     height: 280px;
 }
@@ -109,16 +114,13 @@
     }
 }
 @media all and (max-width:850px){
-    .info {
-        width: 98%;
-    }
-
+    
     .active {
         width: 98%;
     }
 
-    .hide {
-        display: none;
+    .default:nth-child(1){
+        margin-bottom: 0;
     }
 
     .info div h3 {
@@ -127,6 +129,10 @@
 
     .info div p {
         font-size: 15px;
+    }
+
+    .info:nth-child(1) {
+        width: 98%;
     }
 
     .info:nth-child(2)  {

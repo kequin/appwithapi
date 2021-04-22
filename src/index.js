@@ -4,13 +4,13 @@ import reportWebVitals from './reportWebVitals';
 import Forecast from './components/forecast/forecast';
 import Header from './components/header/header';
 import Weatherapi from './api/api';
-import position from './api/position';
+import Position from './api/position'
 
 export default class App extends Component {
     
     WeatherApi = new Weatherapi();
-
-    Position = new position();
+    Position = new Position();
+    
 
 
     state = {
@@ -39,10 +39,11 @@ export default class App extends Component {
             .then((info) => {
                 city = info.city;
             })
-            .catch(this.onError);   
+            .catch(this.onError); 
+        console.log(city)  
         await this.updateInfo(city);
     }
-
+    
     updateInfo = async (city) => {
         await this.WeatherApi.getCyti(city)
         .then((info) => {
@@ -71,6 +72,7 @@ export default class App extends Component {
         })
         .catch(this.onError);
     }
+    
 
     onError = () => {
         this.setState(() => {
@@ -79,7 +81,7 @@ export default class App extends Component {
         this.setState(() => {
              return { error: true }
         })
-        }
+    }
         
 
 
@@ -107,6 +109,7 @@ export default class App extends Component {
         )
     }
 }
+
 
 
 

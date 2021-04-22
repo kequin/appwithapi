@@ -5,9 +5,9 @@ import style from './style.module.scss';
 const Render = (props) => {
     
     const { id, forecastday, weather} = props;
-    console.log(forecastday)
     const all_tiles = id.map((item)=> {
         const { id } = item;
+        console.log(id)
         return (
             <Tiles key={id} id={id} weather={weather} forecastday={forecastday}  />
         )

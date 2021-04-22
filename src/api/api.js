@@ -12,7 +12,7 @@ export default class Weatherapi {
       return await res.json();
     }
     async getCyti(city){
-      const info =  await this.fetchonderver(`q=${city}&days=7`); //`q=${city}&aqi=no`
+      const info =  await this.fetchonderver(`lang=ru&q=${city}&days=7`); //`q=${city}&aqi=no`
       return info;
     }
     // _transformWeather(info){

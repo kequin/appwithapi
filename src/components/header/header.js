@@ -28,7 +28,7 @@ export default class Header extends Component {
         return(
             <header>
                 <div>
-                    <div>
+                    <div translate='no'>
                         <p>Weather
                             <span>Info</span>
                         </p>

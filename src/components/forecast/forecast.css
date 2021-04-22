@@ -4,7 +4,7 @@
     /* background-color: white;#fafafa */
     background-color: #E2EAFC;
     border-radius: 10px;
-    display: block;
     min-height: 400px;
+    padding: 1px 0 0 0;
     box-shadow: 0 0 6px rgb(93, 93, 95);
 }
