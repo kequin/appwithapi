@@ -71,13 +71,16 @@
         height: 40px;
         width: 40px;
         right: 0;
-        top: 10px;
+        margin-top: 0;
+
         position: absolute;
     }
 
         .info .krestic::after, .krestic::before {
             content: '';
             width: 90%;
+            top: 15px;
+            left: 2px;
             position: absolute;
             height: 4px;
             border-radius: 2px;
@@ -119,8 +122,6 @@
 @media all and (max-width:850px){
     
 
-
-
     .default {
         position:absolute;
         height: 210px;
@@ -130,39 +131,38 @@
         width: 95%;
         right: 1.5%;
         top: 60px;
+        z-index: 7;
         position: absolute;
         box-shadow: 0 0 10px #6f99fa;
     }   
 
 
     .info div h3 {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .info div p {
         font-size: 15px;
-    }
+    }   
 
     .default:nth-child(1) {
         width: 98%;
         top: 0px;
         right: 0%;
         left: 0%;
-        margin-bottom: 0;
     }
 
     .default:nth-child(2)  {
         width: 48%;
-        left: 50;
         right: 50%;
+        margin-left: 1%;
         top: 220px;
     }
 
     .default:nth-child(3) {
         width: 48%;
-        left: 50%;
-        
         top: 220px;
+        margin-left: 51%;    
     }
 
     .info div button {

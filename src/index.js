@@ -34,16 +34,36 @@ export default class App extends Component {
     }
 
     startcity = async() => {
-        let city;
+        let city, countrycode ;
         await this.Position.getCity()
             .then((info) => {
+                console.log(info)
                 city = info.city;
+                countrycode = info.country_code;
+                if(city === 'Null' || city === 'null' || city === null){
+                    city = info.country_name;
+                }
             })
-            .catch(this.onError);   
+            .catch(this.onError);
         await this.updateInfo(city);
     }
     
     updateInfo = (city) => {
+
+
+        fetch('http://api.openweathermap.org/data/2.5/weather?q=Brest&lang=ru&appid=cb1b368321809eca6a8674ff0437d55d')
+        .then(function (resp) {return resp.json() })
+
+        .then(function (data) {
+            console.log(data.name);
+            console.log(Math.round(data.main.temp - 273));
+            console.log(data.weather[0]['description']);
+
+            })
+            .catch(function () {
+                //Обрабатываем ошибки
+        });
+
         this.WeatherApi.getCyti(city)
         .then((info) => {
             
@@ -64,10 +84,14 @@ export default class App extends Component {
 
     }
     SearchCity = () => {
-
+        let city;
         this.Position.getCity()
         .then((info) => {
-            this.setState({city:info.city});
+            city = info.city;
+                if(city === 'Null' || city === 'null' || city === null){
+                    city = info.country_name;
+                }
+            this.setState({city:city});
         })
         .catch(this.onError);
     }
