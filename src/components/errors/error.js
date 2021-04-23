@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './error.module.scss';
-import error from  './../../images/errorpng.png';
+import error from  './../../images/error.png';
 
 const Error = () => {
 
@@ -9,10 +9,10 @@ const Error = () => {
         <div className={style.error}>
            <div>
                <h2>
-                   Ошибка!!
+                   Упссс...
                </h2> 
                <p>
-                   Это означает что мы не можем найти страницу которую ты ищешь  
+                   Что то пошло не так, но наш программист над этим усердно работает 
                </p>
            </div>
            <img src={error} alt='error'></img>

@@ -108,11 +108,11 @@ export default class Tiles extends Component {
                         <div className='allinfo'>
                             <h3 >{date} в { weather.city }, {weather.country}</h3> 
                             <p className='p'>{ forecastday[id].day.avgtemp_c } градусов</p>
-                            <div className={this.visibleelement(id)}>
-                                <span className='sky'>
+                            <span className='sky'>
                                     <h4>{forecastday[id].day.condition.text}</h4>
                                     <img src={`https://${forecastday[id].day.condition.icon}`} alt="weather"></img>
                                 </span>
+                            <div className={this.visibleelement(id)}>
                             </div>
                             <button onClick={this.fullinfo1} value={id}>Полная информация</button>
                         </div>

@@ -51,18 +51,26 @@ export default class App extends Component {
     updateInfo = (city) => {
 
 
-        fetch('http://api.openweathermap.org/data/2.5/weather?q=Brest&lang=ru&appid=cb1b368321809eca6a8674ff0437d55d')
-        .then(function (resp) {return resp.json() })
+        // fetch('http://api.openweathermap.org/data/2.5/weather?q=Brest&lang=ru&appid=cb1b368321809eca6a8674ff0437d55d')
+        // .then(function (resp) {return resp.json() })
+        
+        // .then(function (data) {
+        //     console.log(data);
+        //     console.log(Math.round(data.main.temp - 273));
+        //     console.log(data.weather[0]['description']);
 
-        .then(function (data) {
-            console.log(data.name);
-            console.log(Math.round(data.main.temp - 273));
-            console.log(data.weather[0]['description']);
+        //     })
+        //     .catch(function () {
+        //         //Обрабатываем ошибки
+        // });
 
-            })
-            .catch(function () {
-                //Обрабатываем ошибки
-        });
+
+        this.WeatherApi.getopenweather(city)
+        .then((info) => {
+            console.log(info)   
+        })
+        .catch(this.onError)
+
 
         this.WeatherApi.getCyti(city)
         .then((info) => {
