@@ -42,6 +42,7 @@ export default class App extends Component {
                 countrycode = info.country_code;
                 if(city === 'Null' || city === 'null' || city === null){
                     city = info.country_name;
+                    alert('что то не так с нашей api, выбериться столица страны в которой этот город');
                 }
             })
             .catch(this.onError);
@@ -50,19 +51,10 @@ export default class App extends Component {
     
     updateInfo = (city) => {
 
-
-        // fetch('http://api.openweathermap.org/data/2.5/weather?q=Brest&lang=ru&appid=cb1b368321809eca6a8674ff0437d55d')
-        // .then(function (resp) {return resp.json() })
-        
         // .then(function (data) {
         //     console.log(data);
         //     console.log(Math.round(data.main.temp - 273));
         //     console.log(data.weather[0]['description']);
-
-        //     })
-        //     .catch(function () {
-        //         //Обрабатываем ошибки
-        // });
 
 
         this.WeatherApi.getopenweather(city)
@@ -98,6 +90,7 @@ export default class App extends Component {
             city = info.city;
                 if(city === 'Null' || city === 'null' || city === null){
                     city = info.country_name;
+                    alert('что то не так с нашей api, выбериться столица страны в которой этот город');
                 }
             this.setState({city:city});
         })
