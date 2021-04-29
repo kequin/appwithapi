@@ -8,15 +8,32 @@
     transition: 4s;
 }
 
-.info div .hide {
+.info div div .hide {
     display: none;
 }
 
-.info div .nothidden {
+.info div div .nothidden {
     display: block;
+    width: 50%;
+}
+
+
+.nothidden span{
+    height: 50px;
+    width: 100%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    font-size: 15px;
+}
+
+
+.nothidden img {
+    height: 40px;
 }
 
 .info div div {
+    display: flex;
     width: 100%;
 }
 
@@ -49,29 +66,29 @@
     width: 90%;
 }
 
-.sky{
-    margin-top: 20px;
+.first{
     height: 50px;
-    width: 100%;
+    width: 50%;
     display: flex;
     text-align: center;
     align-items: center;
 }
 
-.sky h4 {
+.first h4 {
     float: left;
     font-weight: 400;
 }
 
-.sky img {
+.first img {
     height: 50px
 }
 
     .info .krestic {
-        height: 40px;
-        width: 40px;
+        height: 30px;
+        width: 30px;
         right: 0;
-        margin-top: 0;
+        margin-top: 2px;
+        margin-right: 5px;
 
         position: absolute;
     }
@@ -116,7 +133,10 @@
 
 @media all and (max-width:1000px){
     .default {
-        height: 230px;
+        height: 240px;
+    }
+    .active {
+        height: 240px;
     }
 }
 @media all and (max-width:850px){

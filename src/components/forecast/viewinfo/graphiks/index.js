@@ -9,22 +9,24 @@ export default class Graphic extends Component {
 
     hour_temp_and_other = (object) => {
         let finalobject = [];
-
         for(let i = 0; i<object[0].hour.length;i++){
             finalobject.push(
                 {
-                    name: `${i}:00`,
+                    name: `${object[0].hour[i].time.match(/[ ]\d\d/i)}`,
                     temperature: `${object[0].hour[i].temp_c}`,
-                    pv: 2400
                 }
             )
         }
-        // console.log(finalobject)
+        finalobject.sort(
+            (a, b) => {
+                return a.name - b.name;
+              }
+        )
         return finalobject
     }
 
     max_and_min_temp = (object) => {
-        object[0].hour.sort(function compareNumbers(a, b) {
+        object[0].hour.sort((a, b) => {
             return a.temp_c - b.temp_c;
           })
         return [Math.floor(object[0].hour[0].temp_c -2), Math.floor(object[0].hour[object[0].hour.length-1].temp_c + 2)]
@@ -41,8 +43,8 @@ export default class Graphic extends Component {
             if (active) {
               return (
                 <div className="custom-tooltip">
-                  <p className="label">{`Температура в ${label}`}</p>
-                  <p className="intro">{`${payload[0].value}градусов`}</p>
+                  <p className="label">{`Температура в ${label} часов`}</p>
+                  <p className="intro">{`${payload[0].value} градусов`}</p>
                 </div>
               );
             }

@@ -1,24 +1,36 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Tiles from './tiles/tiles';
 import style from './style.module.scss';
 
 const Render = (props) => {
     
+    const [openornot, setOpenornot] = useState([{id:0, open:false},{id:1, open:false},{id:2, open:false}]);
 
+    const setOpenor = (e) => {
+        let newarr = [];
+        for (let i = 0; i < openornot.length; i++) {
+            newarr.push({id:i, open:false})
+        }
+        newarr[e.target.value] = { id:Number(e.target.value), open:true }
+        setOpenornot(newarr)//[{id:0, open:true},{id:1, open:false},{id:2, open:false}]
+    }
+
+    const closeAll = () => {
+        let newarr = [];
+        for (let i = 0; i < openornot.length; i++) {
+            newarr.push({id:i, open:false})
+        }
+        setOpenornot(newarr)
+    }
 
 
     const {forecastday, weather} = props;
 
 
-    const id = [
-        {id:0},{id:1},{id:2}
-    ];
-
-
-    const all_tiles = id.map((item)=> {
-        const { id } = item;
+    const all_tiles = openornot.map((item)=> {
+        const { id, open } = item;
         return (
-            <Tiles key={id} id={id} weather={weather} forecastday={forecastday}  />
+            <Tiles closeAll={closeAll} setOpen={setOpenor} open={open} key={id} id={id} weather={weather} forecastday={forecastday}  />
         )
     })
 

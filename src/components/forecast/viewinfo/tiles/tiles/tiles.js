@@ -1,5 +1,8 @@
 import React, {Component } from 'react';
 import './index.css';
+import humiditi from './../../../../../images/pngegg.png';
+import arrowup from './../../../../../images/arrowup.png';
+import arrowdown from './../../../../../images/arrowdown.png';
 
 export default class Tiles extends Component {
 
@@ -24,19 +27,12 @@ export default class Tiles extends Component {
                 })
             }
         }
-        else {
-            if(e.target.className === 'krestic'){
-                this.setState(() => {
-                    return { blocks:[false,false,false] }
-                })
-            }
-        }
     }
 
 
-    size_control = (number_in_array) => {
+    size_control = (openornot) => {
         let styles = '';
-        if(this.state.blocks[number_in_array]){
+        if(openornot){
             styles = 'info active'
         } else {
             styles = 'info default'
@@ -45,10 +41,10 @@ export default class Tiles extends Component {
         return styles;
     }
 
-    krest = (number_in_array) => {
+    krest = (openornot) => {
         let style;
         
-        if(this.state.blocks[number_in_array]){
+        if(openornot){
             style = {
                 display:''
             }
@@ -66,14 +62,15 @@ export default class Tiles extends Component {
     // margin-left: -50%; для 
 
 
-    visibleelement = (id) => {
-        const arr = this.state.blocks;
+    visibleelement = (id, openornot) => {
+        // const arr = this.state.blocks;
         let clas;
         switch(true){
-            case arr[id] === true:
+            case openornot === true:
                 clas = 'nothidden';
+                console.log(openornot)
                 break;
-            case arr[id] === false:
+            case openornot === false:
                 clas = 'hide';
                 break;
             default:
@@ -84,8 +81,12 @@ export default class Tiles extends Component {
 
     render(){
 
-        const {weather, forecastday, id} = this.props;
-        // console.log(forecastday)
+        const {weather, forecastday, closeAll, open, id, setOpen} = this.props;
+
+        const forecast = forecastday[id].day;
+        console.log(forecast);
+
+        
         let date;
         switch(true){
             case id === 0:
@@ -103,18 +104,30 @@ export default class Tiles extends Component {
         return(
 
             <React.Fragment>
-                    <div style={{transition: '.4s'}} onClick={this.fullinfo1} className={this.size_control(id)}>
-                        <div style={this.krest(id)} className='krestic'></div>
+                    <div style={{transition: '.4s'}} onClick={this.fullinfo1} className={this.size_control(open)}>
+                        <div style={this.krest(open)} onClick={closeAll} className='krestic'></div>
                         <div className='allinfo'>
                             <h3 >{date} в { weather.city }, {weather.country}</h3> 
-                            <p className='p'>{ forecastday[id].day.avgtemp_c } градусов</p>
-                            <span className='sky'>
-                                    <h4>{forecastday[id].day.condition.text}</h4>
-                                    <img src={`https://${forecastday[id].day.condition.icon}`} alt="weather"></img>
+                            <p className='p'>{ forecast.avgtemp_c } градусов</p>
+                            <div>
+                                <span className='first'>
+                                    <h4>{forecast.condition.text}</h4>
+                                    <img src={`https://${forecast.condition.icon}`} alt="weather"></img>
                                 </span>
-                            <div className={this.visibleelement(id)}>
+                                <span className={this.visibleelement(id, open)}>
+                                    <span>Влажность {forecast.avghumidity}%<img src={humiditi} alt="img"></img></span>
+                                </span>
+                                
                             </div>
-                            <button onClick={this.fullinfo1} value={id}>Полная информация</button>
+                            <div>    
+                                <span className={this.visibleelement(id, open)}>
+                                    <span>Макс температура {forecast.maxtemp_c}С<img src={arrowup} alt="img"></img></span>
+                                </span>
+                                <span className={this.visibleelement(id, open)}>
+                                    <span>Мин температура {forecast.mintemp_c}C<img src={arrowdown} alt="img"></img></span>
+                                </span>
+                            </div>
+                            <button onClick={this.fullinfo1, setOpen} value={id}>Полная информация</button>
                         </div>
                     </div>
             </React.Fragment>

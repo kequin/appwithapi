@@ -34,15 +34,15 @@ export default class App extends Component {
     }
 
     startcity = async() => {
-        let city, countrycode ;
+        let city; // ,countrycode
         await this.Position.getCity()
             .then((info) => {
                 console.log(info)
                 city = info.city;
-                countrycode = info.country_code;
+                // countrycode = info.country_code;
                 if(city === 'Null' || city === 'null' || city === null){
                     city = info.country_name;
-                    alert('что то не так с нашей api, выбериться столица страны в которой этот город');
+                    alert('что то не так с нашей api, выберится столица страны в которой этот город');
                 }
             })
             .catch(this.onError);
@@ -57,23 +57,16 @@ export default class App extends Component {
         //     console.log(data.weather[0]['description']);
 
 
-        this.WeatherApi.getopenweather(city)
-        .then((info) => {
-            console.log(info)   
-        })
-        .catch(this.onError)
-
-
         this.WeatherApi.getCyti(city)
         .then((info) => {
-            
+            let forecast = info.forecast.forecastday;
             this.setState({error: false})
             this.setState(() => {
                 return  {weather:{temp_c: info.current.temp_c, city: info.location.name, country: info.location.country}}
-            }) 
+            })
 
             this.setState(() => {
-                return { forecast:info.forecast.forecastday }
+                return { forecast:forecast }
             })
 
             this.setState(() => {
@@ -90,7 +83,7 @@ export default class App extends Component {
             city = info.city;
                 if(city === 'Null' || city === 'null' || city === null){
                     city = info.country_name;
-                    alert('что то не так с нашей api, выбериться столица страны в которой этот город');
+                    alert('что то не так с нашей api, выберется столица страны в которой этот город');
                 }
             this.setState({city:city});
         })
@@ -120,7 +113,6 @@ export default class App extends Component {
     render() {
         
         const {error, weather,  forecast, loading} = this.state;
-
         // const load = loading ? <Loading /> : null;
         // const content = !(loading || error) ? <Viewinfo forecast = {forecast} weather = {weather} /> : null;
         // const err = error ? <Error /> : null;
