@@ -22,8 +22,13 @@ export default class App extends Component {
         city:null,
 
     }
-    constructor(){
-        super();
+    // constructor(){
+    //     super();
+    //     this.SearchCity();
+    //     this.startcity();
+    // }
+
+    componentDidMount(){
         this.SearchCity();
         this.startcity();
     }
@@ -32,7 +37,6 @@ export default class App extends Component {
         let city; // ,countrycode
         await this.Position.getCity()
             .then((info) => {
-                console.log(info)
                 city = info.city;
                 // countrycode = info.country_code;
                 if(city === 'Null' || city === 'null' || city === null){

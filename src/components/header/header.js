@@ -4,10 +4,10 @@ import Cloudy from './../../images/cloudy.png';
 import map from './../../images/map.png';
 
 
-const Header = () => {
+const Header = (props) => {
     const Searchcity = (e) => {
         const city = e.target.parentNode.childNodes[0].value;
-        this.props.Searchcity(city);
+        props.Searchcity(city);
     }
     return(
         <header>
@@ -17,8 +17,8 @@ const Header = () => {
                     <img src = {Cloudy} alt='img'/>
                 </div>
                 <div>
-                    <img src = {map} alt='map' onClick={() => this.props.MapSearchCity()}/>
-                    <form type='text' onSubmit={() => this.preventDefault()}>
+                    <img src = {map} alt='map' onClick={() => props.MapSearchCity()}/>
+                    <form type='text' onSubmit={(e) => e.preventDefault()}>
                         <input placeholder='Название города' />
                         <button onClick={Searchcity}>
                             search
