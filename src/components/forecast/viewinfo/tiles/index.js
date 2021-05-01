@@ -3,8 +3,7 @@ import Tiles from './tiles/tiles';
 import style from './style.module.scss';
 
 const Render = (props) => {
-    
-    const [openornot, setOpenornot] = useState([{id:0, open:false},{id:1, open:false},{id:2, open:false}]);
+    const [openornot, setOpenornot] = useState([{id:0, open:true},{id:1, open:false},{id:2, open:false}]);
 
     const setOpenor = (e) => {
         let newarr = [];
@@ -23,9 +22,7 @@ const Render = (props) => {
         setOpenornot(newarr)
     }
 
-
     const {forecastday, weather} = props;
-
 
     const all_tiles = openornot.map((item)=> {
         const { id, open } = item;
@@ -34,11 +31,7 @@ const Render = (props) => {
         )
     })
 
-    return (
-            <div className={style.div}>
-                {all_tiles}
-            </div>
-    )
+    return (<div className={style.div}> {all_tiles} </div>)
 }
 
 export default Render

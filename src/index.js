@@ -6,12 +6,9 @@ import Header from './components/header/header';
 import Weatherapi from './api/api';
 import Position from './api/position'
 
-export default class App extends Component {
-    
+export default class App extends Component {  
     WeatherApi = new Weatherapi();
     Position = new Position();
-    
-
 
     state = {
         weather: {
@@ -25,8 +22,6 @@ export default class App extends Component {
         city:null,
 
     }
-
-
     constructor(){
         super();
         this.SearchCity();
@@ -50,13 +45,6 @@ export default class App extends Component {
     }
     
     updateInfo = (city) => {
-
-        // .then(function (data) {
-        //     console.log(data);
-        //     console.log(Math.round(data.main.temp - 273));
-        //     console.log(data.weather[0]['description']);
-
-
         this.WeatherApi.getCyti(city)
         .then((info) => {
             let forecast = info.forecast.forecastday;
@@ -64,11 +52,9 @@ export default class App extends Component {
             this.setState(() => {
                 return  {weather:{temp_c: info.current.temp_c, city: info.location.name, country: info.location.country}}
             })
-
             this.setState(() => {
                 return { forecast:forecast }
             })
-
             this.setState(() => {
                 return {loading:false}
             })
@@ -90,7 +76,6 @@ export default class App extends Component {
         .catch(this.onError);
     }
     
-
     onError = () => {
         this.setState(() => {
                 return { loading: false }
@@ -99,8 +84,6 @@ export default class App extends Component {
              return { error: true }
         })
     }
-        
-
 
     Search = (city) => {
         this.updateInfo(city)
@@ -109,14 +92,8 @@ export default class App extends Component {
     MapSearch =  () => {
         this.updateInfo(this.state.city);
     }
-
     render() {
-        
         const {error, weather,  forecast, loading} = this.state;
-        // const load = loading ? <Loading /> : null;
-        // const content = !(loading || error) ? <Viewinfo forecast = {forecast} weather = {weather} /> : null;
-        // const err = error ? <Error /> : null;
-
         return(
             <div style={{width: '95%', margin: '0 auto'}}>
                 <Header MapSearchCity = {this.MapSearch} Searchcity = {this.Search}/>
@@ -125,9 +102,6 @@ export default class App extends Component {
         )
     }
 }
-
-
-
 
 ReactDOM.render(<App/>, document.getElementById('root'));
 
